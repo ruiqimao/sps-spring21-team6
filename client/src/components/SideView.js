@@ -1,10 +1,16 @@
 import React from 'react'
+import ListItem from './ListItem'
 
 function SideView() {
     return (
-        <div>
-            <h1>Side View</h1>
+        <div className="SideView">
+            <ListItem />
+            <ListItem />
+            <ListItem />
+            <ListItem />
+            
         </div>
+        
     )
 }
 

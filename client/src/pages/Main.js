@@ -4,10 +4,16 @@ import MapView from "../components/MapView";
 
 function Main() {
     return (
-        <div>
-            <SideView />
-            <MapView />
+        
+        <div className="row">
+            <div className="col-sm-12 col-md-5">
+                <SideView />
+            </div>
+            <div className="col-sm-12 col-md-7">
+                <MapView />
+            </div>
         </div>
+    
     )
 }
 
