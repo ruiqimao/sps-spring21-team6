@@ -2,10 +2,14 @@ import React from 'react'
 
 function ListItem() {
     return (
-        <div class="border p-3">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a class="btn btn-primary">Go somewhere</a>
+        <div className="ListItem border p-3">
+                <div className="mb-1">
+                    <h5 className="card-title d-inline">Title</h5>
+                    <h5 className="card-title d-inline float-right">Salary</h5>
+                </div>
+                
+                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto omnis odit magnam, dolorem perspiciatis labore saepe, accusantium magni non ab qui. </p>
+                <a className="btn btn-primary">Go to job page</a>
         </div>
     )
 }

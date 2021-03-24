@@ -1,9 +1,12 @@
 .SideView {
     position: fixed;
     overflow-y: scroll;
+    max-width: 510px;
     top: 0;
     bottom: 0;
 }
+
+
 
 /* width */
 ::-webkit-scrollbar {
