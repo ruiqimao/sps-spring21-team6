@@ -1,22 +1,22 @@
 package resources;
 
 public class Data {
-    private String NameOfGig;
-    private String LocationOfGig;
+    private String nameOfGig;
+    private String locationOfGig;
     private String Description;
     private String Url;
     //Create getters and setters
-    public void setName(String NameOfGig){
-       this.NameOfGig = NameOfGig;
+    public void setName(String nameOfGig){
+       this.nameOfGig = nameOfGig;
     };
     public String getName(){
-      return NameOfGig;
+      return nameOfGig;
     };
-    public void setLocation(String LocationOfGig){
-       this.LocationOfGig = LocationOfGig;
+    public void setLocation(String locationOfGig){
+       this.locationOfGig = locationOfGig;
     };
     public String getLocation( String LocationOfGig){
-       return LocationOfGig;
+       return locationOfGig;
     };
     public void setDescription(String Description){
      this.Description = Description;
@@ -29,6 +29,5 @@ public class Data {
     };
     public String getUrl(String Url){
        return Url; 
-    };
-   
+    };  
 }
