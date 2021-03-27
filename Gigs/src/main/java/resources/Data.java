@@ -6,28 +6,28 @@ public class Data {
     private String Description;
     private String Url;
     //Create getters and setters
-    public void setName(String nameOfGig){
-       this.nameOfGig = nameOfGig;
+    public void setName(String nameOfGig) {
+        this.nameOfGig = nameOfGig;
     };
-    public String getName(){
-      return nameOfGig;
+    public String getName() {
+        return nameOfGig;
     };
-    public void setLocation(String locationOfGig){
-       this.locationOfGig = locationOfGig;
+    public void setLocation(String locationOfGig) {
+        this.locationOfGig = locationOfGig;
     };
-    public String getLocation( String LocationOfGig){
-       return locationOfGig;
+    public String getLocation(String LocationOfGig) {
+        return locationOfGig;
     };
-    public void setDescription(String Description){
-     this.Description = Description;
+    public void setDescription(String Description) {
+        this.Description = Description;
     };
-    public String getDescription(String Description){
-      return Description; 
+    public String getDescription(String Description) {
+        return Description;
     };
-    public void setUrl(String Url){
-       this.Url = Url;
+    public void setUrl(String Url) {
+        this.Url = Url;
     };
-    public String getUrl(String Url){
-       return Url; 
-    };  
+    public String getUrl(String Url) {
+        return Url;
+    };
 }

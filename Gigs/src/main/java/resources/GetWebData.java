@@ -6,14 +6,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
 import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
 
 public class GetWebData {
     public JsonObject scraper() {
         Document document;
-        
         JsonArray array = new JsonArray();;
         Gson gson = new GsonBuilder().create();
         JsonObject jsonObject = new JsonObject();
@@ -24,7 +22,7 @@ public class GetWebData {
         String url = "https://www.simplyhired.com/search?q=gig+work&pn=";
         try {
             //We have to loop through each of the website page as displayed
-            for (current_page = 2; current_page <= max_website_pages; current_page ++) {
+            for (current_page = 2; current_page <= max_website_pages; current_page++) {
                 //Get Document object after parsing the html from given url.
                 url += String.valueOf(current_page);
                 document = Jsoup.connect(url).get();
@@ -38,7 +36,7 @@ public class GetWebData {
                     String[] mylocation = location.split(" ");
                     //Concatenate the first two words
                     location = mylocation[0] + " " + mylocation[1];
-                    
+
                     //Get description
                     String description = element.select("p.jobposting-snippet").text();
                     Elements hreff = element.select("div.jobposting-title > a");
