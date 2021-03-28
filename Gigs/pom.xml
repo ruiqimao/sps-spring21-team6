@@ -17,6 +17,13 @@
 		<googleCloudProjectId>spring21-sps-6</googleCloudProjectId>
 	</properties>
 	<dependencies>
+      <!-- Google Cloud Datastore -->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-datastore</artifactId>
+        <version>1.104.0</version>
+    </dependency>
+    
 		<!-- Java Servlets API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
