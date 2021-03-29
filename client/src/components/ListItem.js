@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function ListItem() {
     return (
-        <div className="ListItem border p-3">
+        <div className="ListItem border bg-white px-4 py-3">
                 <div className="mb-1">
                     <h5 className="card-title d-inline">Title</h5>
                     <h5 className="card-title d-inline float-right">Salary</h5>

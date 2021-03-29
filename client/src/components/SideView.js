@@ -1,6 +1,6 @@
-import React from 'react'
-import ListItem from './ListItem'
-import "./styles/SideView.css"
+import React from 'react';
+import ListItem from './ListItem';
+import "./styles/SideView.css";
 
 function SideView() {
     return (
@@ -13,9 +13,7 @@ function SideView() {
             <ListItem />
             <ListItem />
             <ListItem />
-            
-        </div>
-        
+        </div>   
     )
 }
 
