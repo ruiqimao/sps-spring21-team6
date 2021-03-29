@@ -1,7 +1,8 @@
 .MapView{
     background-color: #cccccc;
     min-height: 70vh;
-    height: 99vh;
+    height: 100vh;
     width: 100vw;
     z-index: -1;
+
 }
