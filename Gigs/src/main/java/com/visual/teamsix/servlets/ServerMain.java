@@ -7,6 +7,7 @@ import org.eclipse.jetty.servlet.ServletHandler;
 
 /**
  * Starts up a server and links up WebScrapper servlet class to the server.
+ * link to Jetty Documentation: https://www.eclipse.org/jetty/documentation/jetty-11/programming_guide.php
  */
 public class ServerMain {
 
@@ -20,11 +21,13 @@ public class ServerMain {
         server.setConnectors(new Connector[] {
             connector
         });
-
+        
         final ServletHandler servletHandler = new ServletHandler();
+        
         servletHandler.addServletWithMapping(WebScraper.class, "/get");
         server.setHandler(servletHandler);
 
+        //Start the server class
         server.start();
 
         // Keep the main thread alive while the server is running.

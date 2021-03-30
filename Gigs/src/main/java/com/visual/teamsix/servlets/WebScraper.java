@@ -12,12 +12,11 @@ import resources.GetWebData;
 public class WebScraper extends HttpServlet {
     private static final long serialVersionUID = 1L;
     GetWebData scrap = new GetWebData();
+    
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json;");
         //Call the class and pass it into response
         response.getWriter().println(scrap.scraper());
     }
-
-
 }
