@@ -1,4 +1,5 @@
 package resources;
+
 import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,14 +12,16 @@ import com.google.gson.Gson;
 
 public class GetWebData {
     public JsonObject scraper() {
+        //Create a document object - This is where website data is initially held
         Document document;
+        //Initialize needed classes for JSON object creation after data is obtained
         JsonArray array = new JsonArray();;
         Gson gson = new GsonBuilder().create();
         JsonObject jsonObject = new JsonObject();
         JsonObject main = new JsonObject();
         //A constant to keep track of maximum number of pages that we can scrap data out of at a time
         final int max_website_pages = 12;
-        int current_page = 2; //Current scraping page
+        int current_page = 1; //Current scraping page
         String url = "https://www.simplyhired.com/search?q=gig+work&pn=";
         try {
             //We have to loop through each of the website page as displayed
@@ -28,7 +31,6 @@ public class GetWebData {
                 document = Jsoup.connect(url).get();
                 Elements mainDiv = document.select("div.SerpJob-jobCard");
                 for (int i = 0; i < mainDiv.size(); i++) {
-
                     Element element = mainDiv.get(i);
                     String name = element.select("a.SerpJob-link").text();
                     String location = element.select("span.jobposting-location").text();
@@ -36,7 +38,6 @@ public class GetWebData {
                     String[] mylocation = location.split(" ");
                     //Concatenate the first two words
                     location = mylocation[0] + " " + mylocation[1];
-
                     //Get description
                     String description = element.select("p.jobposting-snippet").text();
                     Elements hreff = element.select("div.jobposting-title > a");
@@ -59,7 +60,7 @@ public class GetWebData {
         return main;
 
     }
-
+    // method that creates an object representation for each set of data obtained 
     private static Data organizedData(String name, String description, String location, String link) {
         Data data = new Data();
         data.setName(name);

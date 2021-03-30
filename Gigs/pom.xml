@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>9.4.31.v20200723</jetty.version>
 		<!-- Project-specific properties -->
-		<exec.mainClass>com.visual.teamsix.ServerMain</exec.mainClass>
+		<exec.mainClass>com.visual.teamsix.servlets.ServerMain</exec.mainClass>
 		<googleCloudProjectId>spring21-sps-6</googleCloudProjectId>
 	</properties>
 	<dependencies>
@@ -68,30 +68,7 @@
 	<build>
 		<plugins>
 			<!-- Copy static resources like html files into the output jar file. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.7</version>
-				<executions>
-					<execution>
-						<id>copy-web-resources</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>
-                ${project.build.directory}/classes/META-INF/resources
-              </outputDirectory>
-							<resources>
-								<resource>
-									<directory>./src/main/webapp</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+		
 			<!-- Package everything into a single executable jar file. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
