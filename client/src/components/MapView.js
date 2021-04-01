@@ -4,7 +4,7 @@ import "./styles/MapView.css";
 function MapView() {
     return (
         <div className="MapView">
-            <h1>Map View</h1>
+            
         </div>
     )
 }
