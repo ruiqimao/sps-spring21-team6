@@ -17,9 +17,9 @@ const getCurrentCoords = (setState) => {
       navigator.geolocation.getCurrentPosition(pos => {
 
         let lat = pos.coords.latitude
-        let long = pos.coords.longitude
+        let lng = pos.coords.longitude
 
-        setState({lat, long})
+        setState({lat, lng})
 
       }, error, options);
 

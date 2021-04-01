@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import "./styles/MapView.css";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import {getCurrentCoords} from "../map/index"
+import {getCurrentCoords} from "../map/"
+
 
 function MapView() {
 
@@ -10,14 +11,21 @@ function MapView() {
         width: "100%"
     };
 
-    const [coords, setCoords] = useState({lat: null, long: null})
+    const [coords, setCoords] = useState({})
   
     getCurrentCoords(setCoords)
-    
-    console.log(coords)
+
     return (
         <div className="MapView">
-          
+            <LoadScript
+                googleMapsApiKey={process.env.REACT_APP_MAP_KEY}>
+                <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={13}
+                center={coords}
+                
+                />
+            </LoadScript>
         </div>
     )
 }
