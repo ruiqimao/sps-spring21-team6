@@ -7,10 +7,9 @@ function Main() {
         
         <div className="row">
             
-                <SideView />
-      
-            
-                <MapView />
+            <SideView />
+        
+            <MapView />
             
         </div>
     
