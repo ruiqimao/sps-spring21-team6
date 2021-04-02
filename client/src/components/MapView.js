@@ -8,7 +8,8 @@ function MapView() {
 
     const mapStyles = {        
         height: "100vh",
-        width: "100%"
+        width: "64.5%",
+        float: "right"
     };
 
     const [coords, setCoords] = useState({})
