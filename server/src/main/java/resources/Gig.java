@@ -10,7 +10,7 @@ public class Gig {
     public Gig(String name, String location, String description, String salary, String url){
         this.name = name;
         this.location = location;
-        this.description = description
+        this.description = description;
         this.salary = salary.isEmpty() ? "N/A" : salary;
         this.url = url;
     }

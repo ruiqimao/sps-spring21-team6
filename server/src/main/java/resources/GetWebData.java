@@ -56,9 +56,9 @@ public class GetWebData {
           //concatenate string url and extracted part
           String link = url + hreff.attr("href");
           //Create an object for each data that is retrieved
-          Data data = organizedData(name, description, salary, location, link);
+          Gig gig = new Gig(name, location, description, salary, link);
           //Add each data to a JSON array
-          array.add(gson.toJsonTree(data));
+          array.add(gson.toJsonTree(gig));
           jsonObject.add("subdata", array);
         }
       }
@@ -71,14 +71,4 @@ public class GetWebData {
     return main;
   }
 
-  // method that creates an object representation for each set of data obtained 
-  private static Data organizedData(String name, String description, String salary, String location, String link) {
-    Data data = new Data();
-    data.setName(name);
-    data.setDescription(description);
-    data.setSalary(salary);
-    data.setLocation(location);
-    data.setUrl(link);
-    return data;
-  }
 }
