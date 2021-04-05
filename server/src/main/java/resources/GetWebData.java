@@ -51,10 +51,12 @@ public class GetWebData {
           //Get description
           String description = element.select("p.jobposting-snippet").text();
           Elements hreff = element.select("div.jobposting-title > a");
+          //Get salary
+          String salary = element.select("span.jobposting-salary").text();
           //concatenate string url and extracted part
           String link = url + hreff.attr("href");
           //Create an object for each data that is retrieved
-          Data data = organizedData(name, description, location, link);
+          Data data = organizedData(name, description, salary, location, link);
           //Add each data to a JSON array
           array.add(gson.toJsonTree(data));
           jsonObject.add("subdata", array);
@@ -70,10 +72,11 @@ public class GetWebData {
   }
 
   // method that creates an object representation for each set of data obtained 
-  private static Data organizedData(String name, String description, String location, String link) {
+  private static Data organizedData(String name, String description, String salary, String location, String link) {
     Data data = new Data();
     data.setName(name);
     data.setDescription(description);
+    data.setSalary(salary);
     data.setLocation(location);
     data.setUrl(link);
     return data;
