@@ -13,10 +13,16 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
 
 public class GetWebData {
-
+ 
   static final int MAX_WEBSITE_PAGES = 12;
-  static final String SCRAPE_URL = "https://www.simplyhired.com/search?q=gig+work&pn=";
   static final int INITIAL_PAGE = 2;
+
+  private String SCRAPE_URL = "https://www.simplyhired.com/search?q=gig+work";
+
+  public GetWebData(String zip, int dist){
+    String locationQuery = "&l="+zip+"&mi="+dist+"&pn=";
+    SCRAPE_URL = SCRAPE_URL+locationQuery;
+  }
 
   public JsonObject scraper() {
     //Create a document object - This is where website data is initially held
@@ -58,8 +64,8 @@ public class GetWebData {
       e.printStackTrace();
     }
     main.add("data", jsonObject);
-    //You can print main to get results on your terminal
-    //main is the final JSON object that is the result of 'adding up' each json data object
+    System.out.println(SCRAPE_URL);
+    System.out.println(main);
     return main;
   }
 

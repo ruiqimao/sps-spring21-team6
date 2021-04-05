@@ -11,7 +11,7 @@ import resources.GetWebData;
 @WebServlet("/get")
 public class WebScraper extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    GetWebData scrap = new GetWebData();
+    GetWebData scrap = new GetWebData("07011", 5);
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json;");
