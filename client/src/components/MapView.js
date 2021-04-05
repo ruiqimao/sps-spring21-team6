@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./styles/MapView.css";
 import { GoogleMap, LoadScript, Marker, Circle } from '@react-google-maps/api';
-import {getCurrentCoords} from "../map/"
+import {getCurrentCoords, getAddressData} from "../map/"
 
 
 function MapView() {
@@ -14,9 +14,19 @@ function MapView() {
 
     const [coords, setCoords] = useState({})
     const [radius, setRadius] = useState(3000)
+    const [address, setAddress] = useState({})
   
     getCurrentCoords(setCoords)
 
+    useEffect(() => { 
+        getAddressData(coords.lat, coords.lng).then(data =>{
+            setAddress(data)
+        })
+    }, [coords])
+  
+    
+    console.log(coords)
+    console.log(address.zip.long_name)
     return (
         <div className="MapView">
             <LoadScript

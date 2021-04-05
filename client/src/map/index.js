@@ -8,7 +8,7 @@ const getCurrentCoords = (setState) => {
 
     const options = {
         enableHighAccuracy: true,
-        timeout: 1000,
+        timeout: 200,
         maximumAge: 0
     };
     
@@ -20,6 +20,7 @@ const getCurrentCoords = (setState) => {
         let lng = pos.coords.longitude
 
         setState({lat, lng})
+        return
 
       }, error, options);
 
@@ -30,7 +31,20 @@ const getCurrentCoords = (setState) => {
     
   }
 
+  const getAddressData = async (lat, long) => {
+    try{
+      const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&sensor=true&key=${process.env.REACT_APP_MAP_KEY}`);
+      const data = await res.json()
+      const addressData = data.results[0].address_components
+      const [address, street, city, county, state, country, zip] = addressData
+      return {address, street, city, county, state, country, zip}
+    } catch(err){
+      console.log(err)
+    }
+  }
+
 
 module.exports = {
-    getCurrentCoords
+    getCurrentCoords,
+    getAddressData
 }
