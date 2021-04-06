@@ -11,11 +11,14 @@ import resources.GetWebData;
 @WebServlet("/get")
 public class WebScraper extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    GetWebData scrap = new GetWebData("07011", 5);
+    GetWebData scrap;
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         response.setContentType("application/json;");
+        String zipCode = request.getParameter("zip");
+        String distRadius = request.getParameter("rad");
+        scrap = new GetWebData(zipCode, distRadius);
         //Call the class and pass it into response
         response.getWriter().println(scrap.scraper());
     }

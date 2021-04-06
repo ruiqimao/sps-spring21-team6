@@ -19,7 +19,7 @@ public class GetWebData {
 
   private String SCRAPE_URL = "https://www.simplyhired.com/search?q=gig+work";
 
-  public GetWebData(String zip, int dist){
+  public GetWebData(String zip, String dist){
     String locationQuery = "&l="+zip+"&mi="+dist+"&pn=";
     SCRAPE_URL = SCRAPE_URL+locationQuery;
   }
