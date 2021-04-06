@@ -1,5 +1,4 @@
 
-
 const getCurrentCoords = (setState) => {
 
     const error = err => {

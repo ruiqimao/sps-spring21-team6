@@ -7,6 +7,7 @@ function Main() {
 
     const [coords, setCoords] = useState({})
     const [radius, setRadius] = useState(3000)
+    const [gigs, setGigs] = useState([])
   
     getCurrentCoords(setCoords)
 
@@ -14,18 +15,18 @@ function Main() {
         getAddressData(coords.lat, coords.lng).then(data =>{
             fetch("http://localhost:8080/get")
             .then(res => res.json())
-            .then(gigs => console.log(gigs))
+            .then(gigs => setGigs([...gigs.data.subdata]))
+            .catch(err => console.log(err))
         })
     }, [coords])
 
-    console.log(coords)
     
-      
+    
     return (
         
         <div className="row">
             
-            <SideView />
+            <SideView gigs={gigs}/>
         
             <MapView coords={coords} radius={radius}/>
             
