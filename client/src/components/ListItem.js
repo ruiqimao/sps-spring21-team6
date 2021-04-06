@@ -12,7 +12,7 @@ function ListItem(props) {
                 </div>
                 
                 <p className="card-text">{description}</p>
-                <a href={url} className="btn btn-primary">Go to job page</a>
+                <a href={url} rel="noreferrer" target="_blank" className="btn btn-primary">Go to job page</a>
         </div>
     )
 }

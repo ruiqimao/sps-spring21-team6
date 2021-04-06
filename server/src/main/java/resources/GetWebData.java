@@ -16,9 +16,10 @@ public class GetWebData {
  
   static final int MAX_WEBSITE_PAGES = 12;
   static final int INITIAL_PAGE = 2;
+  static final String BASE_URL = "https://www.simplyhired.com";
 
   private String SCRAPE_URL = "https://www.simplyhired.com/search?q=gig+work";
-
+  
   public GetWebData(String zip, String dist){
     String locationQuery = "&l="+zip+"&mi="+dist+"&pn=";
     SCRAPE_URL = SCRAPE_URL+locationQuery;
@@ -55,11 +56,11 @@ public class GetWebData {
           location = mylocation[0] + " " + mylocation[1];
           //Get description
           String description = element.select("p.jobposting-snippet").text();
-          Elements hreff = element.select("div.jobposting-title > a");
+          Elements hreff = element.select("a.SerpJob-link");
           //Get salary
           String salary = element.select("span.jobposting-salary").text();
           //concatenate string url and extracted part
-          String link = url + hreff.attr("href");
+          String link = BASE_URL + hreff.attr("data-mdref");
           //Create an object for each data that is retrieved
           Gig gig = new Gig(name, location, description, salary, link);
           //Add each data to a JSON array
