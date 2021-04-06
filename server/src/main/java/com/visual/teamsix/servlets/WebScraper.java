@@ -14,6 +14,7 @@ public class WebScraper extends HttpServlet {
     GetWebData scrap = new GetWebData("07011", 5);
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         response.setContentType("application/json;");
         //Call the class and pass it into response
         response.getWriter().println(scrap.scraper());
