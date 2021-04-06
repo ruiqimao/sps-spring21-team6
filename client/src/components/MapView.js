@@ -16,7 +16,7 @@ function MapView(props) {
                 googleMapsApiKey={process.env.REACT_APP_MAP_KEY}>
                 <GoogleMap
                     mapContainerStyle={mapStyles}
-                    zoom={13}
+                    zoom={12}
                     center={props.coords}
                 >
                     <Marker position={props.coords}/>

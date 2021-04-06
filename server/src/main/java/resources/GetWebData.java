@@ -27,6 +27,9 @@ public class GetWebData {
   public JsonObject scraper() {
     //Create a document object - This is where website data is initially held
     Document document;
+    //Count gigs in page
+    int postingTotal; 
+    int count = 0;
     //Initialize needed classes for JSON object creation after data is obtained
     JsonArray array = new JsonArray();;
     Gson gson = new GsonBuilder().create();
@@ -40,6 +43,8 @@ public class GetWebData {
         String url = SCRAPE_URL + String.valueOf(current_page);
         document = Jsoup.connect(url).get();
         Elements mainDiv = document.select("div.SerpJob-jobCard");
+        postingTotal = Integer.parseInt(document.select("span.posting-total").text());
+        if(count >= postingTotal) break;
         for (int i = 0; i < mainDiv.size(); i++) {
           Element element = mainDiv.get(i);
           String name = element.select("a.SerpJob-link").text();
@@ -59,6 +64,7 @@ public class GetWebData {
           Gig gig = new Gig(name, location, description, salary, link);
           //Add each data to a JSON array
           array.add(gson.toJsonTree(gig));
+          count++;
           jsonObject.add("subdata", array);
         }
       }

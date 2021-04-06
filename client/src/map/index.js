@@ -32,6 +32,7 @@ export const getAddressData = async (lat, lng) => {
     const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true&key=${process.env.REACT_APP_MAP_KEY}`);
     const data = await res.json()
     const addressData = data.results[0].address_components
+    console.log(addressData)
     const [address, street, city, county, state, country, zip] = addressData
     return {address, street, city, county, state, country, zip}
     
@@ -39,4 +40,5 @@ export const getAddressData = async (lat, lng) => {
     console.log(err)
   }
 }
+
 
