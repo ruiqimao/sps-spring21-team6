@@ -18,11 +18,11 @@ public class GetWebData {
   static final int INITIAL_PAGE = 2;
   static final String BASE_URL = "https://www.simplyhired.com";
 
-  private String SCRAPE_URL = "https://www.simplyhired.com/search?q=gig+work";
+  private String scrapeURL = "https://www.simplyhired.com/search?q=gig+work";
   
   public GetWebData(String zip, String dist){
     String locationQuery = "&l="+zip+"&mi="+dist+"&pn=";
-    SCRAPE_URL = SCRAPE_URL+locationQuery;
+    scrapeURL = scrapeURL+locationQuery;
   }
 
   public JsonObject scraper() {
@@ -41,7 +41,7 @@ public class GetWebData {
       //We have to loop through each of the website page as displayed
       for (int current_page = INITIAL_PAGE; current_page <= MAX_WEBSITE_PAGES; current_page++) {
         //Get Document object after parsing the html from given url.
-        String url = SCRAPE_URL + String.valueOf(current_page);
+        String url = scrapeURL + String.valueOf(current_page);
         document = Jsoup.connect(url).get();
         Elements mainDiv = document.select("div.SerpJob-jobCard");
         postingTotal = Integer.parseInt(document.select("span.posting-total").text());
@@ -73,7 +73,7 @@ public class GetWebData {
       e.printStackTrace();
     }
     main.add("data", jsonObject);
-    System.out.println(SCRAPE_URL);
+    System.out.println(scrapeURL);
     System.out.println(main);
     return main;
   }

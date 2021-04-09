@@ -6,18 +6,26 @@ import {usePosition, getAddressData} from "../map/"
 function Main() {
 
     const {coords, setCoords, err} = usePosition()
-    const [radius, setRadius] = useState(8046.72)
+    const [radius, setRadius] = useState(8050)
     const [gigs, setGigs] = useState([])
 
     useEffect(() => { 
+        async function fetchGigs(){
+            try{
+                const address = await getAddressData(coords.lat, coords.lng);
+                const servletRes = await fetch(`http://localhost:8080/get?zip=${address.zip.long_name}&rad=5`);
+                const gigs = await servletRes.json();
+                setGigs(gigs.data.subdata);
+            } catch(err){
+                console.error(err);
+            }
+            
+        }
+        
         if(gigs.length > 0) return;
-        getAddressData(coords.lat, coords.lng)
-        .then(address => fetch(`http://localhost:8080/get?zip=${address.zip.long_name}&rad=5`))
-        .then(res => res.json())
-        .then(gigs => setGigs(gigs.data.subdata))
-        .catch(err => console.log(err))
-   
-    }, [coords])
+        fetchGigs();
+
+    }, [coords, gigs])
 
     
     return (
