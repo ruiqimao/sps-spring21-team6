@@ -73,8 +73,6 @@ public class GetWebData {
       e.printStackTrace();
     }
     main.add("data", jsonObject);
-    System.out.println(scrapeURL);
-    System.out.println(main);
     return main;
   }
 
