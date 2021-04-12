@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./styles/MapView.css";
 import { GoogleMap, LoadScript, Marker, Circle } from '@react-google-maps/api';
-import {getCurrentCoords} from "../map/"
 
-
-function MapView() {
+function MapView(props) {
 
     const mapStyles = {        
         height: "100vh",
@@ -12,24 +10,19 @@ function MapView() {
         float: "right"
     };
 
-    const [coords, setCoords] = useState({})
-    const [radius, setRadius] = useState(3000)
-  
-    getCurrentCoords(setCoords)
-
     return (
         <div className="MapView">
             <LoadScript
                 googleMapsApiKey={process.env.REACT_APP_MAP_KEY}>
                 <GoogleMap
                     mapContainerStyle={mapStyles}
-                    zoom={13}
-                    center={coords}
+                    zoom={12}
+                    center={props.coords}
                 >
-                    <Marker position={coords}/>
+                    <Marker position={props.coords}/>
                     <Circle
-                        center={coords}
-                        radius={radius}
+                        center={props.coords}
+                        radius={props.radius}
                         options={{
                             strokeColor: "#ff0000"
                         }}

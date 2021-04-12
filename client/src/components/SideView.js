@@ -2,17 +2,10 @@ import React from 'react';
 import ListItem from './ListItem';
 import "./styles/SideView.css";
 
-function SideView() {
+function SideView(props) {
     return (
         <div className="SideView">
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
+            {props.gigs.map(gig => <ListItem {...gig} />)}
         </div>   
     )
 }
