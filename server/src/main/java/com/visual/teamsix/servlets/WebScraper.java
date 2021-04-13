@@ -14,7 +14,7 @@ public class WebScraper extends HttpServlet {
     GetWebData scrap;
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.addHeader("Access-Control-Allow-Origin", "*");
         response.setContentType("application/json;");
         String zipCode = request.getParameter("zip");
         String distRadius = request.getParameter("rad");

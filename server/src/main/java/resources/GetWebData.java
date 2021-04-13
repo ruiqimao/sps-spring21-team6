@@ -29,7 +29,7 @@ public class GetWebData {
     //Create a document object - This is where website data is initially held
     Document document;
     //Count gigs in page
-    int postingTotal = 0;
+    int gigTotal = 0;
     int count = 0;
     //Initialize needed classes for JSON object creation after data is obtained
     JsonArray array = new JsonArray();;
@@ -44,9 +44,13 @@ public class GetWebData {
         String url = scrapeURL + String.valueOf(current_page);
         document = Jsoup.connect(url).get();
         Elements mainDiv = document.select("div.SerpJob-jobCard");
-        postingTotal = Integer.parseInt(document.select("span.CategoryPath-total").text());
+        String postingTotal = document.select("span.CategoryPath-total").text();
+        if(postingTotal.isEmpty())
+          postingTotal = document.select("span.posting-total").text();
         
-        if(count >= postingTotal) break;
+        gigTotal = Integer.parseInt(postingTotal);
+        
+        if(count >= gigTotal) break;
         for (int i = 0; i < mainDiv.size(); i++) {
           Element element = mainDiv.get(i);
           String name = element.select("a.SerpJob-link").text();
