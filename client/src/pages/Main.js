@@ -17,7 +17,7 @@ function Main() {
                 const url = process.env.REACT_APP_SERVLET_URL || "http://localhost:8080";
                 const servletRes = await fetch(`${url}/get?zip=${address.zip.long_name}&rad=5`);
                 const gigs = await servletRes.json();
-                setGigs(gigs.data.subdata);
+                setGigs(gigs.data.subdata || []);
             } catch(err){
                 console.error(err);
             }

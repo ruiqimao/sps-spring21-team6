@@ -22,6 +22,7 @@ public class GetWebData {
   
   public GetWebData(String zip, String dist){
     String locationQuery = "&l="+zip+"&mi="+dist+"&pn=";
+    
     scrapeURL = scrapeURL+locationQuery;
   }
 
@@ -42,7 +43,8 @@ public class GetWebData {
       for (int current_page = INITIAL_PAGE; current_page <= MAX_WEBSITE_PAGES; current_page++) {
         //Get Document object after parsing the html from given url.
         String url = scrapeURL + String.valueOf(current_page);
-        document = Jsoup.connect(url).get();
+        //FIXED USING CHROME AGENT
+        document = Jsoup.connect(url).userAgent("Chrome").get();
         Elements mainDiv = document.select("div.SerpJob-jobCard");
         String postingTotal = document.select("span.CategoryPath-total").text();
         if(postingTotal.isEmpty())
